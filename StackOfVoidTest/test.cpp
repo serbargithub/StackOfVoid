@@ -43,6 +43,7 @@ TEST(StackOfVoid, IsEmpty) {
 	EXPECT_EQ(true, StackOfVoid__IsEmpty(&g_Stack));
 	StackOfVoid__Push(&g_Stack, (StackItem_t)item1);
 	EXPECT_EQ(false, StackOfVoid__IsEmpty(&g_Stack));
+
 }
 
 TEST(StackOfVoid, OnePushPop) {
@@ -72,6 +73,7 @@ TEST(StackOfVoid, TwoPushPop) {
 	EXPECT_EQ(checkedItem, item2);
 	StackOfVoid__Pop((StackItem_t*)&checkedItem, &g_Stack);
 	EXPECT_EQ(checkedItem, item1);
+
 }
 
 TEST(StackOfVoid, ThreePushPop) {
@@ -100,6 +102,7 @@ TEST(StackOfVoid, ThreePushPop) {
 	EXPECT_EQ(STACK_RESULT__IS_EMPTY, result);
 	EXPECT_EQ(g_Stack.sizeActual, 0);
 	EXPECT_EQ(checkedItem, 5);
+
 }
 
 TEST(StackOfVoid, FourPushPop) {
@@ -161,4 +164,6 @@ TEST(StackOfVoid, GetByIndex) {
 
 	result = StackOfVoid__GetByIndex((StackItem_t*)&checkedItem, &g_Stack, 4);
 	EXPECT_EQ(STACK_RESULT__OUT_OF_SCOPE_ERROR, result);
+
+
 }
