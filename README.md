@@ -23,7 +23,7 @@ stackContainer.errorCallback = CallBackInformer;
 stackContainer.stackID = 5;  //there is an example of stack with ID 5
 
 // The module can inform about overfull and out of scope errors by external callback function
-// For using the futures set an call back and set a stack ID to identify callback calling.
+// For using the feature, set an call back and set a stack ID to identify callback calling.
 // if you fo not use it please set callback to NULL
 
  stackContainer.errorCallback = NULL;
