@@ -1,14 +1,14 @@
 # Stack of void module #
 
 	The module ensures a push - pop stack operations for data with void type.
-In addition it provides an random acces to stored data. It can be used for various 
-appliences like sorting and storing algorithm. 
-	The module uses externaly allocated memory for stack data, 
-but provide size control and overfilling contol.
+In addition, it provides an random access to stored data. It can be used for various 
+applications like sorting and storing algorithm. 
+	The module uses externally allocated memory for stack data, 
+but provide size control and overfilling control.
 
 ## How to use ##
 
- Before using it neccesary allocate memory with  **StackItem_t** type and assign it to Stack container:
+ Before using it necessary allocate memory with  **StackItem_t** type and assign it to Stack container:
  
  
 ```C
@@ -40,7 +40,7 @@ Is used every time when you need erase created stack.
 
 > bool StackOfVoid__IsEmpty (StackOfVoid_t* stack)
 
-Is used to check emptyness of the stack. 
+Is used to check emptiness of the stack. 
 **Return value:** _true_ or _false_.
 
 ---
