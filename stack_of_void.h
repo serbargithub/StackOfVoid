@@ -31,7 +31,6 @@ extern "C" {
 	StackResults_t StackOfVoid__Pop(StackItem_t* pPopedItem, StackOfVoid_t* stack);
 	StackResults_t StackOfVoid__GetByIndex(StackItem_t* pGottenItem, StackOfVoid_t* stack, uint32_t index);
 
-
 #ifdef	__cplusplus
 }
 #endif
