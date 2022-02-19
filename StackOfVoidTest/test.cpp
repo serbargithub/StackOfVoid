@@ -24,16 +24,16 @@ void GlobalStackInit() {
 TEST(StackOfVoid, Reset) {
 
   GlobalStackInit();
-  EXPECT_EQ(STACK_RESULT_OK, StackOfVoid__Reset(&g_Stack));
+  EXPECT_EQ(STACK_RESULT__OK, StackOfVoid__Reset(&g_Stack));
   g_Stack.pFirstItem = NULL;
-  EXPECT_EQ(STACK_IS_NOT_INITED, StackOfVoid__Reset(&g_Stack));
+  EXPECT_EQ(STACK_RESULT__IS_NOT_INITED, StackOfVoid__Reset(&g_Stack));
 
-  EXPECT_EQ(STACK_IS_NOT_INITED, StackOfVoid__Reset(NULL));
+  EXPECT_EQ(STACK_RESULT__IS_NOT_INITED, StackOfVoid__Reset(NULL));
 
   GlobalStackInit();
-  EXPECT_EQ(STACK_RESULT_OK, StackOfVoid__Reset(&g_Stack));
+  EXPECT_EQ(STACK_RESULT__OK, StackOfVoid__Reset(&g_Stack));
   g_Stack.sizeMax = 0;
-  EXPECT_EQ(STACK_IS_NOT_INITED, StackOfVoid__Reset(&g_Stack));
+  EXPECT_EQ(STACK_RESULT__IS_NOT_INITED, StackOfVoid__Reset(&g_Stack));
 }
 
 TEST(StackOfVoid, IsEmpty) {
@@ -95,7 +95,7 @@ TEST(StackOfVoid, ThreePushPop) {
 	EXPECT_EQ(g_Stack.sizeActual, 1);
 	checkedItem = 5;
 	StackResults_t result = StackOfVoid__Pop((StackItem_t*)&checkedItem, &g_Stack);
-	EXPECT_EQ(STACK_EMPTY, result);
+	EXPECT_EQ(STACK_RESULT__IS_EMPTY, result);
 	EXPECT_EQ(g_Stack.sizeActual, 0);
 	EXPECT_EQ(checkedItem, 5);
 
@@ -110,9 +110,9 @@ TEST(StackOfVoid, FourPushPop) {
 	StackOfVoid__Push(&g_Stack, (StackItem_t)item1);
 	StackOfVoid__Push(&g_Stack, (StackItem_t)item2);
 	result = StackOfVoid__Push(&g_Stack, (StackItem_t)item3);
-	EXPECT_EQ(STACK_RESULT_OK, result);
+	EXPECT_EQ(STACK_RESULT__OK, result);
 	result= StackOfVoid__Push(&g_Stack, (StackItem_t)itemOdd);
-	EXPECT_EQ(STACK_IS_FULL_ERROR, result);
+	EXPECT_EQ(STACK_RESULT__OVERFULL_ERROR, result);
 	EXPECT_EQ(g_Stack.sizeActual, 3);
 
 	uint32_t checkedItem = 0;
@@ -123,7 +123,7 @@ TEST(StackOfVoid, FourPushPop) {
 	EXPECT_EQ(g_Stack.sizeActual, 1);
 	checkedItem = 5;
 	result = StackOfVoid__Pop((StackItem_t*)&checkedItem, &g_Stack);
-	EXPECT_EQ(STACK_EMPTY, result);
+	EXPECT_EQ(STACK_RESULT__IS_EMPTY, result);
 	EXPECT_EQ(g_Stack.sizeActual, 0);
 	EXPECT_EQ(checkedItem, 5);
 }
@@ -136,7 +136,7 @@ TEST(StackOfVoid, GetByIndex) {
 	StackOfVoid__Reset(&g_Stack);
 	EXPECT_EQ(true, StackOfVoid__IsEmpty(&g_Stack));
 	result = StackOfVoid__GetByIndex((StackItem_t*)&checkedItem, &g_Stack, 1);
-	EXPECT_EQ(STACK_OUT_OF_SCOPE_ERROR, result);
+	EXPECT_EQ(STACK_RESULT__OUT_OF_SCOPE_ERROR, result);
 
 	StackOfVoid__Push(&g_Stack, (StackItem_t)item1);
 	StackOfVoid__Push(&g_Stack, (StackItem_t)item2);
@@ -145,19 +145,19 @@ TEST(StackOfVoid, GetByIndex) {
 	EXPECT_EQ(g_Stack.sizeActual, 3);
 
 	result = StackOfVoid__GetByIndex((StackItem_t*)&checkedItem, &g_Stack, 1);
-	EXPECT_EQ(STACK_RESULT_OK, result);
+	EXPECT_EQ(STACK_RESULT__OK, result);
 	EXPECT_EQ(checkedItem, item1);
 
 	result = StackOfVoid__GetByIndex((StackItem_t*)&checkedItem, &g_Stack, 2);
-	EXPECT_EQ(STACK_RESULT_OK, result);
+	EXPECT_EQ(STACK_RESULT__OK, result);
 	EXPECT_EQ(checkedItem, item2);
 
 	result = StackOfVoid__GetByIndex((StackItem_t*)&checkedItem, &g_Stack, 3);
-	EXPECT_EQ(STACK_RESULT_OK, result);
+	EXPECT_EQ(STACK_RESULT__OK, result);
 	EXPECT_EQ(checkedItem, item3);
 
 	result = StackOfVoid__GetByIndex((StackItem_t*)&checkedItem, &g_Stack, 4);
-	EXPECT_EQ(STACK_OUT_OF_SCOPE_ERROR, result);
+	EXPECT_EQ(STACK_RESULT__OUT_OF_SCOPE_ERROR, result);
 
 
 }

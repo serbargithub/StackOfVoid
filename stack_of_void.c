@@ -19,13 +19,13 @@ extern "C" {
 
 		if (IsStackInited(stack) == false) {
 
-			return STACK_IS_NOT_INITED;
+			return STACK_RESULT__IS_NOT_INITED;
 		}
 
 		*(stack->pFirstItem) = NULL;
 		stack->sizeActual = 0;
 
-		return STACK_RESULT_OK;
+		return STACK_RESULT__OK;
 	}
 
 	//-------------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ extern "C" {
 
 		if (IsStackInited(stack) == false) {
 
-			return STACK_IS_NOT_INITED;
+			return STACK_RESULT__IS_NOT_INITED;
 		}
 		uint32_t i;
 
@@ -49,8 +49,8 @@ extern "C" {
 		}
 		if ((i == stack->sizeMax) && (stack->errorCallback != NULL)) {
 
-			stack->errorCallback(stack->stackID, STACK_IS_FULL_ERROR);
-			return STACK_IS_FULL_ERROR;
+			stack->errorCallback(stack->stackID, STACK_RESULT__OVERFULL_ERROR);
+			return STACK_RESULT__OVERFULL_ERROR;
 		}
 		*(stack->pFirstItem + i) = pushedItem;
 
@@ -59,7 +59,7 @@ extern "C" {
 		}
 		stack->sizeActual = i + 1;
 
-		return STACK_RESULT_OK;
+		return STACK_RESULT__OK;
 	}
 
 	//-------------------------------------------------------------------------------------
@@ -67,7 +67,7 @@ extern "C" {
 
 		if (IsStackInited(stack) == false) {
 
-			return STACK_IS_NOT_INITED;
+			return STACK_RESULT__IS_NOT_INITED;
 		}
 		uint32_t i;
 
@@ -76,14 +76,14 @@ extern "C" {
 		}
 		if (i == 0) {
 			stack->sizeActual = 0;
-			return STACK_EMPTY;
+			return STACK_RESULT__IS_EMPTY;
 		}
 		i--;
 		*pPopedItem = *(stack->pFirstItem + i);
 		*(stack->pFirstItem + i) = NULL;
 		stack->sizeActual = i + 1;
 
-		return STACK_RESULT_OK;
+		return STACK_RESULT__OK;
 	}
 
 	//-------------------------------------------------------------------------------------
@@ -91,11 +91,11 @@ extern "C" {
 
 		if (IsStackInited(stack) == false) {
 
-			return STACK_IS_NOT_INITED;
+			return STACK_RESULT__IS_NOT_INITED;
 		}
 		if (index == 0)
 		{
-			return STACK_OUT_OF_SCOPE_ERROR;
+			return STACK_RESULT__OUT_OF_SCOPE_ERROR;
 		}
 		index--;
 		uint32_t i;
@@ -108,13 +108,14 @@ extern "C" {
 		}
 		if ((index >= i) && (stack->errorCallback != NULL)) {
 
-		stack->errorCallback(stack->stackID, STACK_OUT_OF_SCOPE_ERROR);
-		return STACK_OUT_OF_SCOPE_ERROR;
+			stack->errorCallback(stack->stackID, STACK_RESULT__OUT_OF_SCOPE_ERROR);
+
+			return STACK_RESULT__OUT_OF_SCOPE_ERROR;
 		}
 
 		*pGottenItem = *(stack->pFirstItem + index);
 
-		return STACK_RESULT_OK;
+		return STACK_RESULT__OK;
 	}
 
 #ifdef	__cplusplus

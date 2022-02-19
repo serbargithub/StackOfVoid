@@ -7,11 +7,11 @@ extern "C" {
 #endif
 
 	typedef enum {
-		STACK_RESULT_OK = 1,
-		STACK_EMPTY = 0,
-		STACK_IS_NOT_INITED = -1,
-		STACK_IS_FULL_ERROR = -2,
-		STACK_OUT_OF_SCOPE_ERROR = -3
+		STACK_RESULT__OK = 1,
+		STACK_RESULT__IS_EMPTY = 0,
+		STACK_RESULT__IS_NOT_INITED = -1,
+		STACK_RESULT__OVERFULL_ERROR = -2,
+		STACK_RESULT__OUT_OF_SCOPE_ERROR = -3
 	}StackResults_t;
 
 	typedef void* StackItem_t;
