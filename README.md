@@ -8,7 +8,7 @@ but provide size control and overfilling control.
 
 ## How to use ##
 
- Before using it necessary allocate memory with  **StackItem_t** type and assign it to Stack container:
+ Before using it, is necessary allocate memory with  **StackItem_t** type and assign it to Stack container:
  
  
 ```C
@@ -49,7 +49,7 @@ Is used to check emptiness of the stack.
 
 Pushed an item to the stack.
 
-**Return result:** enum with **STACK_RESULT__OK** or an error, in addition provide call back with **STACK_RESULT__OVERFULL_ERROR**.
+**Return result:** enum with **STACK_RESULT__OK** or an error, in addition provides a callback with **STACK_RESULT__OVERFULL_ERROR**.
 
 ---
 
@@ -63,8 +63,8 @@ Pop an item from the stack.
 
 >StackResults_t StackOfVoid__GetByIndex (StackItem_t* pGottenItem, StackOfVoid_t* stack, uint32_t index)
 
-provide access to an item from the stack by a sored index.
+provide access to an item from the stack by an index.
 
-**Return result:** enum with **STACK_RESULT__OK** or **STACK_RESULT__OUT_OF_SCOPE_ERROR** in addition provide call back with **STACK_RESULT__OUT_OF_SCOPE_ERROR**.
+**Return result:** enum with **STACK_RESULT__OK** or **STACK_RESULT__OUT_OF_SCOPE_ERROR** in addition provides a callback with **STACK_RESULT__OUT_OF_SCOPE_ERROR**.
 
 ---
