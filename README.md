@@ -5,6 +5,7 @@ In addition, it provides an random access to stored data. It can be used for var
 applications like sorting and storing algorithm. 
 	The module uses externally allocated memory for stack data, 
 but provide size control and overfilling control.
+	All functionality is covered by `Google Tests`
 
 ## How to use ##
 
@@ -34,7 +35,7 @@ stackContainer.stackID = 5;  //there is an example of stack with ID 5
 > StackResults_t StackOfVoid__Reset (StackOfVoid_t* stack)
 
 Is used every time when you need erase created stack.
-**Return result:** enum with `STACK_RESULT__OK` or an error.
+**Return result:** enum with **STACK_RESULT__OK** or an error.
 
 ---
 
@@ -61,10 +62,10 @@ Pop an item from the stack.
 
 ---
 
->StackResults_t StackOfVoid__GetByIndex (StackItem_t* pGottenItem, StackOfVoid_t* stack, uint32_t index)
+> StackResults_t StackOfVoid__GetByIndex (StackItem_t* pGottenItem, StackOfVoid_t* stack, uint32_t index)
 
 provide access to an item from the stack by an index.
 
-**Return result:** enum with **STACK_RESULT__OK** or **STACK_RESULT__OUT_OF_SCOPE_ERROR** in addition provides a callback with **STACK_RESULT__OUT_OF_SCOPE_ERROR**.
+**Return result:** enum with **STACK_RESULT__OK** or an error, in addition provides a callback with **STACK_RESULT__OUT_OF_SCOPE_ERROR**.
 
 ---
