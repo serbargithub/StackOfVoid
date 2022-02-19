@@ -18,12 +18,12 @@ void GlobalStackInit() {
 	g_Stack.pFirstItem = g_testStack;
 	g_Stack.sizeMax = ITEMS_MAX;
 	g_Stack.errorCallback = StackErorrHandler;
-	g_Stack.stackID = 0;
 }
 
 TEST(StackOfVoid, Reset) {
 
   GlobalStackInit();
+  g_Stack.stackID = 1;
   EXPECT_EQ(STACK_RESULT__OK, StackOfVoid__Reset(&g_Stack));
   g_Stack.pFirstItem = NULL;
   EXPECT_EQ(STACK_RESULT__IS_NOT_INITED, StackOfVoid__Reset(&g_Stack));
@@ -39,6 +39,7 @@ TEST(StackOfVoid, Reset) {
 TEST(StackOfVoid, IsEmpty) {
 
 	GlobalStackInit();
+	g_Stack.stackID = 2;
 	EXPECT_EQ(true, StackOfVoid__IsEmpty(&g_Stack));
 	StackOfVoid__Push(&g_Stack, (StackItem_t)item1);
 	EXPECT_EQ(false, StackOfVoid__IsEmpty(&g_Stack));
@@ -48,6 +49,7 @@ TEST(StackOfVoid, IsEmpty) {
 TEST(StackOfVoid, OnePushPop) {
 
 	GlobalStackInit();
+	g_Stack.stackID = 3;
 	StackOfVoid__Reset(&g_Stack);
 	EXPECT_EQ(true, StackOfVoid__IsEmpty(&g_Stack));
 	StackOfVoid__Push(&g_Stack, (StackItem_t)item1);
@@ -60,6 +62,7 @@ TEST(StackOfVoid, OnePushPop) {
 TEST(StackOfVoid, TwoPushPop) {
 
 	GlobalStackInit();
+	g_Stack.stackID = 4;
 	StackOfVoid__Reset(&g_Stack);
 	EXPECT_EQ(true, StackOfVoid__IsEmpty(&g_Stack));
 	StackOfVoid__Push(&g_Stack, (StackItem_t)item1);
@@ -76,6 +79,7 @@ TEST(StackOfVoid, TwoPushPop) {
 TEST(StackOfVoid, ThreePushPop) {
 
 	GlobalStackInit();
+	g_Stack.stackID = 5;
 	StackOfVoid__Reset(&g_Stack);
 	EXPECT_EQ(true, StackOfVoid__IsEmpty(&g_Stack));
 	StackOfVoid__Push(&g_Stack, (StackItem_t)item1);
@@ -105,6 +109,7 @@ TEST(StackOfVoid, FourPushPop) {
 
 	StackResults_t result;
 	GlobalStackInit();
+	g_Stack.stackID = 6;
 	StackOfVoid__Reset(&g_Stack);
 	EXPECT_EQ(true, StackOfVoid__IsEmpty(&g_Stack));
 	StackOfVoid__Push(&g_Stack, (StackItem_t)item1);
@@ -133,6 +138,7 @@ TEST(StackOfVoid, GetByIndex) {
 	StackResults_t result;
 	uint32_t checkedItem = 0;
 	GlobalStackInit();
+	g_Stack.stackID = 7;
 	StackOfVoid__Reset(&g_Stack);
 	EXPECT_EQ(true, StackOfVoid__IsEmpty(&g_Stack));
 	result = StackOfVoid__GetByIndex((StackItem_t*)&checkedItem, &g_Stack, 1);

@@ -45,16 +45,21 @@ extern "C" {
 
 		for (i = 0; i < stack->sizeMax; i++) {
 
-			if (*(stack->pFirstItem + i) == NULL) { break; }
+			if (*(stack->pFirstItem + i) == NULL) { 
+
+				break; 
+			}
 		}
 		if ((i == stack->sizeMax) && (stack->errorCallback != NULL)) {
 
 			stack->errorCallback(stack->stackID, STACK_RESULT__OVERFULL_ERROR);
+
 			return STACK_RESULT__OVERFULL_ERROR;
 		}
 		*(stack->pFirstItem + i) = pushedItem;
 
 		if (i < (stack->sizeMax - 1)) {
+
 			*(stack->pFirstItem + i + 1) = NULL;
 		}
 		stack->sizeActual = i + 1;
@@ -72,10 +77,16 @@ extern "C" {
 		uint32_t i;
 
 		for (i = 0; i < stack->sizeMax; i++) {
-			if (*(stack->pFirstItem + i) == NULL) { break; }
+
+			if (*(stack->pFirstItem + i) == NULL) {
+
+				break; 
+			}
 		}
 		if (i == 0) {
+
 			stack->sizeActual = 0;
+
 			return STACK_RESULT__IS_EMPTY;
 		}
 		i--;
@@ -93,8 +104,8 @@ extern "C" {
 
 			return STACK_RESULT__IS_NOT_INITED;
 		}
-		if (index == 0)
-		{
+		if (index == 0) {
+
 			return STACK_RESULT__OUT_OF_SCOPE_ERROR;
 		}
 		index--;
@@ -103,6 +114,7 @@ extern "C" {
 		for (i = 0; i < stack->sizeMax; i++) {
 
 			if (*(stack->pFirstItem + i) == NULL) {
+
 				break;
 			}
 		}
@@ -112,7 +124,6 @@ extern "C" {
 
 			return STACK_RESULT__OUT_OF_SCOPE_ERROR;
 		}
-
 		*pGottenItem = *(stack->pFirstItem + index);
 
 		return STACK_RESULT__OK;
