@@ -2,9 +2,11 @@
 
 	The module ensures a push - pop stack operations for data with void type.
 In addition, it provides an random access to stored data. It can be used for various 
-applications like sorting and storing algorithm. 
+applications like sorting and storing algorithm.
+ 
 	The module uses externally allocated memory for stack data, 
 but provide size control and overfilling control.
+
 	All functionality is covered by `Google Tests`
 
 ## How to use ##
