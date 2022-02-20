@@ -5,11 +5,11 @@ In addition, it provides an random access to stored data. It can be used for var
  
 The module uses externally allocated memory for stack data, but provide size control and overfilling control.
 
-All functionality is covered by `Google Tests`
+All functionality is covered by `Google Tests`.
 
 ## How to use ##
 
- Before using it, is necessary allocate memory with  **StackItem_t** type and assign it to Stack container:
+ Before using it, is necessary allocate memory (static or heap) with  **StackItem_t** type and assign it to Stack container:
  
  
 ```C
@@ -25,7 +25,7 @@ stackContainer.stackID = 5;  //there is an example of stack with ID 5
 
 // The module can inform about overfull and out of scope errors by external callback function
 // For using the feature, set an call back and set a stack ID to identify callback calling.
-// if you fo not use it please set callback to NULL
+// if you not use it, please set callback to NULL
 
  stackContainer.errorCallback = NULL;
 ``` 
@@ -34,7 +34,7 @@ stackContainer.stackID = 5;  //there is an example of stack with ID 5
 
 > StackResults_t StackOfVoid__Reset (StackOfVoid_t* stack)
 
-Is used every time when you need erase created stack.
+Is used every time, when you need erase the stack.
 **Return result:** enum with **STACK_RESULT__OK** or an error.
 
 ---
@@ -48,7 +48,7 @@ Is used to check emptiness of the stack.
 
 > StackResults_t StackOfVoid__Push (StackOfVoid_t* stack, StackItem_t pushedItem)
 
-Pushed an item to the stack.
+Push an item to the stack.
 
 **Return result:** enum with **STACK_RESULT__OK** or an error, in addition provides a callback with **STACK_RESULT__OVERFULL_ERROR**.
 
