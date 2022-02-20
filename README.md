@@ -65,7 +65,7 @@ Pop an item from the stack.
 > StackResults_t StackOfVoid__GetByIndex (StackItem_t* pGottenItem, StackOfVoid_t* stack, uint32_t index)
 
 Provide access to an item from the stack by an index.
-The lowes index of item in the stack starts with 1.
+The lowest index of item in the stack starts with 1.
 
 **Return result:** enum with **STACK_RESULT__OK** or an error, in addition provides a callback with **STACK_RESULT__OUT_OF_SCOPE_ERROR**.
 

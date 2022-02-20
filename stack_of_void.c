@@ -25,6 +25,7 @@ extern "C" {
 
 	//-------------------------------------------------------------------------------------
 	bool StackOfVoid__IsEmpty(StackOfVoid_t* stack) {
+
 		return *(stack->pFirstItem) == NULL;
 	}
 
