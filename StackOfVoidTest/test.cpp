@@ -8,36 +8,38 @@ StackOfVoid_t g_Stack;
 
 uint32_t item1 = 1, item2 = 2, item3 = 3, itemOdd = 99;
 
-void StackErorrHandler(uint32_t stackID, StackResults_t result)
-{
+void StackErorrHandler(uint32_t stackID, StackResults_t result) {
 	printf("\r\n###### Into stack with ID: %i catched an error %i ####\r\n\r\n", stackID, result);
 }
 
 void GlobalStackInit() {
-
 	g_Stack.pFirstItem = g_testStack;
 	g_Stack.sizeMax = ITEMS_MAX;
 	g_Stack.errorCallback = StackErorrHandler;
 }
 
-TEST(StackOfVoid, Reset) {
-
+TEST(StackOfVoid, Reset_StackInited) {
   GlobalStackInit();
   g_Stack.stackID = 1;
   EXPECT_EQ(STACK_RESULT__OK, StackOfVoid__Reset(&g_Stack));
-  g_Stack.pFirstItem = NULL;
-  EXPECT_EQ(STACK_RESULT__IS_NOT_INITED, StackOfVoid__Reset(&g_Stack));
+}
 
-  EXPECT_EQ(STACK_RESULT__IS_NOT_INITED, StackOfVoid__Reset(NULL));
+TEST(StackOfVoid, Reset_StackNotInited) {
+	EXPECT_EQ(STACK_RESULT__IS_NOT_INITED, StackOfVoid__Reset(NULL));
 
-  GlobalStackInit();
-  EXPECT_EQ(STACK_RESULT__OK, StackOfVoid__Reset(&g_Stack));
-  g_Stack.sizeMax = 0;
-  EXPECT_EQ(STACK_RESULT__IS_NOT_INITED, StackOfVoid__Reset(&g_Stack));
+	GlobalStackInit();
+	g_Stack.stackID = 1;
+	EXPECT_EQ(STACK_RESULT__OK, StackOfVoid__Reset(&g_Stack));
+	g_Stack.pFirstItem = NULL;
+	EXPECT_EQ(STACK_RESULT__IS_NOT_INITED, StackOfVoid__Reset(&g_Stack));
+
+	GlobalStackInit();
+	EXPECT_EQ(STACK_RESULT__OK, StackOfVoid__Reset(&g_Stack));
+	g_Stack.sizeMax = 0;
+	EXPECT_EQ(STACK_RESULT__IS_NOT_INITED, StackOfVoid__Reset(&g_Stack));
 }
 
 TEST(StackOfVoid, IsEmpty) {
-
 	GlobalStackInit();
 	g_Stack.stackID = 2;
 	EXPECT_EQ(true, StackOfVoid__IsEmpty(&g_Stack));
@@ -46,7 +48,6 @@ TEST(StackOfVoid, IsEmpty) {
 }
 
 TEST(StackOfVoid, OnePushPop) {
-
 	GlobalStackInit();
 	g_Stack.stackID = 3;
 	StackOfVoid__Reset(&g_Stack);
@@ -59,7 +60,6 @@ TEST(StackOfVoid, OnePushPop) {
 }
 
 TEST(StackOfVoid, TwoPushPop) {
-
 	GlobalStackInit();
 	g_Stack.stackID = 4;
 	StackOfVoid__Reset(&g_Stack);
@@ -75,7 +75,6 @@ TEST(StackOfVoid, TwoPushPop) {
 }
 
 TEST(StackOfVoid, ThreePushPop) {
-
 	GlobalStackInit();
 	g_Stack.stackID = 5;
 	StackOfVoid__Reset(&g_Stack);
@@ -103,7 +102,6 @@ TEST(StackOfVoid, ThreePushPop) {
 }
 
 TEST(StackOfVoid, FourPushPop) {
-
 	StackResults_t result;
 	GlobalStackInit();
 	g_Stack.stackID = 6;
@@ -131,7 +129,6 @@ TEST(StackOfVoid, FourPushPop) {
 }
 
 TEST(StackOfVoid, GetByIndex) {
-
 	StackResults_t result;
 	uint32_t checkedItem = 0;
 	GlobalStackInit();
