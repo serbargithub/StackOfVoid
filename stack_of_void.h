@@ -27,7 +27,7 @@ extern "C" {
 
 	StackResults_t StackOfVoid__Reset(StackOfVoid_t* stack);
 	bool StackOfVoid__IsEmpty(StackOfVoid_t* stack);
-	StackResults_t StackOfVoid__Push(StackOfVoid_t* stack, StackItem_t pushedItem);
+	StackResults_t StackOfVoid__Push(StackOfVoid_t* stack, StackItem_t itemToPush);
 	StackResults_t StackOfVoid__Pop(StackItem_t* pPopedItem, StackOfVoid_t* stack);
 	StackResults_t StackOfVoid__GetByIndex(StackItem_t* pGottenItem, StackOfVoid_t* stack, uint32_t index);
 
